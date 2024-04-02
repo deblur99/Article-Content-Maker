@@ -7,120 +7,59 @@
 
 import Cocoa
 
-@main
 class AppDelegate: NSObject, NSApplicationDelegate {
-
+    var window: NSWindow!
+    // MARK: NSWindow 객체를 새로 만들어서 뷰와 연결할 때는 반드시 뷰에 대한 VC의 강한 참조가 있어야 한다! (매우 중요)
+    var viewController: ViewController! // 강한 참조 선언
     
-
-
+    static let shared = AppDelegate()
+    
+    // 앱이 실행되었을 때 호출 (UIKit의 viewDidLoad와 유사)
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        showMainWindow()
     }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
-
-    func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
-        return true
-    }
-
-    // MARK: - Core Data stack
-
-    lazy var persistentContainer: NSPersistentContainer = {
-        /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-        */
-        let container = NSPersistentContainer(name: "ArticleContentMaker")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                 
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
-                fatalError("Unresolved error \(error)")
-            }
-        })
-        return container
-    }()
-
-    // MARK: - Core Data Saving and Undo support
-
-    func save() {
-        // Performs the save action for the application, which is to send the save: message to the application's managed object context. Any encountered errors are presented to the user.
-        let context = persistentContainer.viewContext
-
-        if !context.commitEditing() {
-            NSLog("\(NSStringFromClass(type(of: self))) unable to commit editing before saving")
-        }
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                // Customize this code block to include application-specific recovery steps.
-                let nserror = error as NSError
-                NSApplication.shared.presentError(nserror)
-            }
-        }
-    }
-
-    func windowWillReturnUndoManager(window: NSWindow) -> UndoManager? {
-        // Returns the NSUndoManager for the application. In this case, the manager returned is that of the managed object context for the application.
-        return persistentContainer.viewContext.undoManager
-    }
-
-    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
-        // Save changes in the application's managed object context before the application terminates.
-        let context = persistentContainer.viewContext
+    
+    func showMainWindow() {
+        // 창의 시작 위치와 크기를 정하고, 어떤 모양으로 띄울지, 로딩될 때까지 화면을 보여줄건지 여부 결정 (defer)
+        window = NSWindow(contentRect: .init(x: 0, y: 0, width: 400, height: 400), styleMask: [.titled, .closable, .miniaturizable], backing: .buffered, defer: false)
         
-        if !context.commitEditing() {
-            NSLog("\(NSStringFromClass(type(of: self))) unable to commit editing to terminate")
+        window.title = "Article Content Maker"
+        window.setContentSize(.init(width: 600, height: 800))
+        window.center() // 창을 가운데로 옮김
+
+        // 코드로 구현한 ViewController를 창에 띄우려면, 여기서 VC의 인스턴스를 만들어서 window에 넣어줘야 한다.
+        // let vc = ViewController()    // 약한 참조 -> error
+        viewController = ViewController()
+        window.contentView = viewController.view
+
+        window.makeKeyAndOrderFront(nil) // 현재 화면을 화면 목록의 최상단으로 보여준다 (root view controller와 유사)
+        window.delegate = self
+    }
+    
+    // 앱이 실행되었을 때 호출되어, 팝업창으로 앱 종료 여부를 묻는다.
+    // 버튼 추가할 때 addTarget을 사용할 필요가 없다.
+    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
+        let alert = NSAlert()
+        alert.messageText = "앱을 종료하시겠습니까?" // 제목
+        alert.informativeText = "모든 진행 상황이 사라집니다." // 설명
+        alert.addButton(withTitle: "종료")
+        alert.addButton(withTitle: "취소")
+        
+        let response = alert.runModal()
+        // 종료 버튼이 눌렸을 때
+        if response == .alertFirstButtonReturn {
+            return .terminateNow
+        } else {
+            // 취소 버튼이 눌렸을 때
             return .terminateCancel
         }
-        
-        if !context.hasChanges {
-            return .terminateNow
-        }
-        
-        do {
-            try context.save()
-        } catch {
-            let nserror = error as NSError
-
-            // Customize this code block to include application-specific recovery steps.
-            let result = sender.presentError(nserror)
-            if (result) {
-                return .terminateCancel
-            }
-            
-            let question = NSLocalizedString("Could not save changes while quitting. Quit anyway?", comment: "Quit without saves error question message")
-            let info = NSLocalizedString("Quitting now will lose any changes you have made since the last successful save", comment: "Quit without saves error question info");
-            let quitButton = NSLocalizedString("Quit anyway", comment: "Quit anyway button title")
-            let cancelButton = NSLocalizedString("Cancel", comment: "Cancel button title")
-            let alert = NSAlert()
-            alert.messageText = question
-            alert.informativeText = info
-            alert.addButton(withTitle: quitButton)
-            alert.addButton(withTitle: cancelButton)
-            
-            let answer = alert.runModal()
-            if answer == .alertSecondButtonReturn {
-                return .terminateCancel
-            }
-        }
-        // If we got here, it is time to quit.
-        return .terminateNow
     }
-
 }
 
+extension AppDelegate: NSWindowDelegate {
+    // 창 닫혔을 때 실행되는 Delegate 메서드
+    func windowShouldClose(_ sender: NSWindow) -> Bool {
+        NSApplication.shared.terminate(self) // 종료 트리거 발생시켜 종료 Delegate 호출
+        return false // 창 닫기 버튼 눌렀을 때 창 닫기 방지
+    }
+}

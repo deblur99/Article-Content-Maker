@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		612C49CD2BBC46E9003E6C12 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612C49CC2BBC46E9003E6C12 /* main.swift */; };
 		61376A5C2BA6C6BA008628AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61376A5B2BA6C6BA008628AC /* AppDelegate.swift */; };
 		61376A5E2BA6C6BA008628AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61376A5D2BA6C6BA008628AC /* ViewController.swift */; };
 		61376A612BA6C6BA008628AC /* ArticleContentMaker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 61376A5F2BA6C6BA008628AC /* ArticleContentMaker.xcdatamodeld */; };
@@ -15,6 +16,8 @@
 		61376A712BA6C6BD008628AC /* ArticleContentMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61376A702BA6C6BD008628AC /* ArticleContentMakerTests.swift */; };
 		61376A7B2BA6C6BD008628AC /* ArticleContentMakerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61376A7A2BA6C6BD008628AC /* ArticleContentMakerUITests.swift */; };
 		61376A7D2BA6C6BD008628AC /* ArticleContentMakerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61376A7C2BA6C6BD008628AC /* ArticleContentMakerUITestsLaunchTests.swift */; };
+		61376A902BA6EE83008628AC /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61376A8F2BA6EE83008628AC /* Content.swift */; };
+		61376A942BA6F5DE008628AC /* NSLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61376A932BA6F5DE008628AC /* NSLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		612C49CC2BBC46E9003E6C12 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		61376A582BA6C6BA008628AC /* ArticleContentMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArticleContentMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61376A5B2BA6C6BA008628AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61376A5D2BA6C6BA008628AC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +51,8 @@
 		61376A762BA6C6BD008628AC /* ArticleContentMakerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArticleContentMakerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		61376A7A2BA6C6BD008628AC /* ArticleContentMakerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContentMakerUITests.swift; sourceTree = "<group>"; };
 		61376A7C2BA6C6BD008628AC /* ArticleContentMakerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContentMakerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		61376A8F2BA6EE83008628AC /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
+		61376A932BA6F5DE008628AC /* NSLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +103,15 @@
 		61376A5A2BA6C6BA008628AC /* ArticleContentMaker */ = {
 			isa = PBXGroup;
 			children = (
+				61376A922BA6F5CD008628AC /* Models */,
+				61376A912BA6F5C4008628AC /* Views */,
 				61376A5B2BA6C6BA008628AC /* AppDelegate.swift */,
 				61376A5D2BA6C6BA008628AC /* ViewController.swift */,
 				61376A622BA6C6BC008628AC /* Assets.xcassets */,
 				61376A642BA6C6BC008628AC /* Main.storyboard */,
 				61376A672BA6C6BC008628AC /* ArticleContentMaker.entitlements */,
 				61376A5F2BA6C6BA008628AC /* ArticleContentMaker.xcdatamodeld */,
+				612C49CC2BBC46E9003E6C12 /* main.swift */,
 			);
 			path = ArticleContentMaker;
 			sourceTree = "<group>";
@@ -122,6 +131,22 @@
 				61376A7C2BA6C6BD008628AC /* ArticleContentMakerUITestsLaunchTests.swift */,
 			);
 			path = ArticleContentMakerUITests;
+			sourceTree = "<group>";
+		};
+		61376A912BA6F5C4008628AC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				61376A932BA6F5DE008628AC /* NSLabel.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		61376A922BA6F5CD008628AC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				61376A8F2BA6EE83008628AC /* Content.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,7 +281,10 @@
 			files = (
 				61376A5E2BA6C6BA008628AC /* ViewController.swift in Sources */,
 				61376A5C2BA6C6BA008628AC /* AppDelegate.swift in Sources */,
+				612C49CD2BBC46E9003E6C12 /* main.swift in Sources */,
+				61376A902BA6EE83008628AC /* Content.swift in Sources */,
 				61376A612BA6C6BA008628AC /* ArticleContentMaker.xcdatamodeld in Sources */,
+				61376A942BA6F5DE008628AC /* NSLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,7 +463,6 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -462,7 +489,6 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
