@@ -28,7 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.center() // 창을 가운데로 옮김
 
         // 코드로 구현한 ViewController를 창에 띄우려면, 여기서 VC의 인스턴스를 만들어서 window에 넣어줘야 한다.
-        // let vc = ViewController()    // 약한 참조 -> error
+        // let vc = ViewController()    // 약한 참조error
         viewController = ViewController()
         window.contentView = viewController.view
 

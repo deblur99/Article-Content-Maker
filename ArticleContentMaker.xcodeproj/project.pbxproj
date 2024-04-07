@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		612C49CD2BBC46E9003E6C12 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612C49CC2BBC46E9003E6C12 /* main.swift */; };
+		612C49CF2BC2ADAF003E6C12 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612C49CE2BC2ADAF003E6C12 /* MainView.swift */; };
 		61376A5C2BA6C6BA008628AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61376A5B2BA6C6BA008628AC /* AppDelegate.swift */; };
 		61376A5E2BA6C6BA008628AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61376A5D2BA6C6BA008628AC /* ViewController.swift */; };
 		61376A612BA6C6BA008628AC /* ArticleContentMaker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 61376A5F2BA6C6BA008628AC /* ArticleContentMaker.xcdatamodeld */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		612C49CC2BBC46E9003E6C12 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		612C49CE2BC2ADAF003E6C12 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		61376A582BA6C6BA008628AC /* ArticleContentMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArticleContentMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61376A5B2BA6C6BA008628AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61376A5D2BA6C6BA008628AC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				61376A932BA6F5DE008628AC /* NSLabel.swift */,
+				612C49CE2BC2ADAF003E6C12 /* MainView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				61376A5E2BA6C6BA008628AC /* ViewController.swift in Sources */,
+				612C49CF2BC2ADAF003E6C12 /* MainView.swift in Sources */,
 				61376A5C2BA6C6BA008628AC /* AppDelegate.swift in Sources */,
 				612C49CD2BBC46E9003E6C12 /* main.swift in Sources */,
 				61376A902BA6EE83008628AC /* Content.swift in Sources */,
